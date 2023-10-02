@@ -16,7 +16,8 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[github](https://github.com/samuelmui8)]
 [[portfolio](team/samuelmui.md)]
 
-* Role: Member
+* Role: Developer
+* Responsibilities: Testing
 
 ### Teo Kai Sheng
 
@@ -28,7 +29,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Role: Developer
 * Responsibilities: UI
 
-### Johnny Doe
+### Lim RuiZhi
 
 <img src="images/ruizhi.png" width="200px">
 
