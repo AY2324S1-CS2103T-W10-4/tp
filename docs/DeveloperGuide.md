@@ -263,22 +263,28 @@ _{Explain here how the data archiving feature will be implemented}_
 * prefers typing to mouse interactions
 * is reasonably comfortable using CLI apps
 
-**Value proposition**: manage contacts faster than a typical mouse/GUI driven app
+**Value proposition**: User-friendly interface makes recording and retrieving information a breeze.
+Convenient food diary that records your restaurant visits, menu items.
+No more forgetting the name of that delightful dish you had last week; 
+it's all neatly stored in your digital food diary. Able to sort by prices, and ratings, good for students
+on a budget!
 
 
 ### User stories
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                                    | I want to …​                     | So that I can…​                                                        |
-| -------- | ------------------------------------------ | ------------------------------ | ---------------------------------------------------------------------- |
-| `* * *`  | new user                                   | see usage instructions         | refer to instructions when I forget how to use the App                 |
-| `* * *`  | user                                       | add a new person               |                                                                        |
-| `* * *`  | user                                       | delete a person                | remove entries that I no longer need                                   |
-| `* * *`  | user                                       | find a person by name          | locate details of persons without having to go through the entire list |
-| `* *`    | user                                       | hide private contact details   | minimize chance of someone else seeing them by accident                |
-| `*`      | user with many persons in the address book | sort persons by name           | locate a person easily                                                 |
-
+| Priority | As a …​                                     | I want to …​                 | So that I can…​                                                        |
+| -------- |---------------------------------------------|------------------------------| ---------------------------------------------------------------------- |
+| `* * *`  | new user                                    | see usage instructions       | refer to instructions when I forget how to use the App                 |
+| `* * *`  | user                                        | add a new person             |                                                                        |
+| `* * *`  | user                                        | delete a person              | remove entries that I no longer need                                   |
+| `* * *`  | user                                        | find a person by name        | locate details of persons without having to go through the entire list |
+| `* *`    | user                                        | hide private contact details | minimize chance of someone else seeing them by accident                |
+| `*`      | user with many persons in the address book  | sort persons by name         | locate a person easily                                                 |
+| `*`      | student interested in sustainability        | identify local ingredients   | support environmentally conscious dining choices                       |
+| `*`      | student always on the move                  | receive alerts about pop ups |  seize food opportunities wherever I go.                               |
+| `*`      | Muslim student                              | know which halal certified   | eat halal food.                                                        |
 *{More to be added}*
 
 ### Use cases
@@ -308,7 +314,23 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case resumes at step 2.
 
-*{More to be added}*
+**Use Case: View All Stalls**
+
+**MSS**
+
+1. User requests to view all stalls using the command `list`.
+2. FoodNote retrieves and displays a list of all available stalls, including their names and locations.
+3. User reviews the list of stalls. 
+
+   Use case ends.
+
+**Extensions**
+
+* 1a. No stalls are available in the database: 
+    * FoodNote displays a message indicating that there are no stalls available.
+    
+    Use case ends.
+
 
 ### Non-Functional Requirements
 
