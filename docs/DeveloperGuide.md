@@ -302,7 +302,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `*`      | user with many persons in the address book  | sort persons by name         | locate a person easily                                                 |
 | `*`      | student interested in sustainability        | identify local ingredients   | support environmentally conscious dining choices                       |
 | `*`      | student always on the move                  | receive alerts about pop ups |  seize food opportunities wherever I go.                               |
-| `*`      | Muslim student                              | know which halal certified   | eat halal food.  
+| `*`      | Muslim student                              | know which halal certified   | eat halal food.                                                        |
 
 *{More to be added}*
 
