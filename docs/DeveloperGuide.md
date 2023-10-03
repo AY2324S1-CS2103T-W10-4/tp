@@ -3,7 +3,7 @@ layout: page
 title: Developer Guide
 ---
 * Table of Contents
-{:toc}
+  {:toc}
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -224,13 +224,13 @@ The following activity diagram summarizes what happens when a user executes a ne
 **Aspect: How undo & redo executes:**
 
 * **Alternative 1 (current choice):** Saves the entire address book.
-  * Pros: Easy to implement.
-  * Cons: May have performance issues in terms of memory usage.
+    * Pros: Easy to implement.
+    * Cons: May have performance issues in terms of memory usage.
 
 * **Alternative 2:** Individual command knows how to undo/redo by
   itself.
-  * Pros: Will use less memory (e.g. for `delete`, just save the person being deleted).
-  * Cons: We must ensure that the implementation of each individual command are correct.
+    * Pros: Will use less memory (e.g. for `delete`, just save the person being deleted).
+    * Cons: We must ensure that the implementation of each individual command are correct.
 
 _{more aspects and alternatives to be added}_
 
@@ -257,7 +257,9 @@ _{Explain here how the data archiving feature will be implemented}_
 
 **Target user profile**:
 
-* has a need to manage a significant number of contacts
+* student foodie from NUS
+* has a need to remember reviews of many food stores and food items
+* has a tight budget
 * prefer desktop apps over other types
 * can type fast
 * prefers typing to mouse interactions
@@ -270,50 +272,226 @@ _{Explain here how the data archiving feature will be implemented}_
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                                    | I want to …​                     | So that I can…​                                                        |
-| -------- | ------------------------------------------ | ------------------------------ | ---------------------------------------------------------------------- |
-| `* * *`  | new user                                   | see usage instructions         | refer to instructions when I forget how to use the App                 |
-| `* * *`  | user                                       | add a new person               |                                                                        |
-| `* * *`  | user                                       | delete a person                | remove entries that I no longer need                                   |
-| `* * *`  | user                                       | find a person by name          | locate details of persons without having to go through the entire list |
-| `* *`    | user                                       | hide private contact details   | minimize chance of someone else seeing them by accident                |
-| `*`      | user with many persons in the address book | sort persons by name           | locate a person easily                                                 |
-
+| Priority | As a …​                           | I want to …​                                                             | So that I can…​                                                   |
+|----------|-----------------------------------|--------------------------------------------------------------------------|-------------------------------------------------------------------|
+| `* * *`  | new user                          | add reviews to stalls                                                    | remember what I think about the food stall.                       |
+| `* * *`  | new user                          | delete reviews from stalls                                               | delete review of the food stall if I change my mind about it      |
+| `* * *`  | new user                          | add restaurant                                                           | add restaurants if I want to                                      |
+| `* * *`  | new user                          | delete restaurant                                                        | change my mind about the restaurant                               |
+| `* * *`  | new user                          | add menu item                                                            | review specific food from a specific restaurant                   |
+| `* * *`  | new user                          | delete menu item                                                         | remove it if I changed my mind                                    |
+| `* * *`  | new user                          | view restaurants                                                         | see the list of restaurants I have saved                          |
+| `* * *`  | new user                          | view the user guide easily                                               | learn more about the product when needed                          |
+| `* * *`  | new user                          | add reviews to menu items                                                | so that I can remember what I think about the menu item           |
+| `* * *`  | new user                          | delete reviews from menu items                                           | delete review of the menu item if I change my mind about it       |
+| `* *`    | hungry university student         | browse the ‘discount’ page for nearby campus eateries offering discounts | save money on meals                                               |
+| `* *`    | busy student                      | browse the daily specials page                                           | find on-campus restaurants and quickly decide where to grab lunch |
+| `* *`    | experienced user                  | save my favorite places                                                  | easily access them                                                |
+| `* *`    | new user                          | look at menu items of each store                                         | know what I can order                                             |
+| `* *`    | vegetarian student                | filter food options to only show vegetarian choices                      | find what I can eat                                               |
+| `* *`    | student with allergies            | filter food options by allergen information                              | eat safely                                                        |
+| `* *`    | health-conscious student          | see nutritional information for menu items                               | make informed choices about what I eat                            |
+| `* *`    | new user                          | sort by the most highly rated stores                                     | see what is popular                                               |
+| `* *`    | student trying to save money      | sort food items of stores by price                                       | plan what to eat to save money                                    |
+| `* *`    | student who often studies late    | search for food places by filtering by opening hours                     | quickly find food places to go for late-night suppers             |
+| `*`      | see how to travel to the stalls   | See how to travel to the stalls                                          | find my way easily                                                |
 *{More to be added}*
 
 ### Use cases
 
-(For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
+(For all use cases below, the **System** is the `FoodNotes` and the **Actor** is the `user`, unless specified otherwise)
 
-**Use case: Delete a person**
+**Use case: Add a stall**
 
 **MSS**
 
-1.  User requests to list persons
-2.  AddressBook shows a list of persons
-3.  User requests to delete a specific person in the list
-4.  AddressBook deletes the person
+1.  User requests to list stalls
+2.  FoodNotes shows a list of stalls
+3.  User requests to add a specific stall to the list by keying stall name and location
+4.  FoodNotes adds the stall to list
 
     Use case ends.
 
 **Extensions**
 
-* 2a. The list is empty.
+* 3a. The stall name and location is not specified
+
+    * 3a1. FoodNotes shows an error message.
+
+    Use case ends
+
+**Use case: Review a stall**
+
+**MSS**
+
+1.  User requests to list stalls
+2.  FoodNotes shows a list of stalls
+3.  User requests to review a stall by providing stall number, star rating and description
+4.  FoodNotes add the review to the stall
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The list of stalls is empty.
 
   Use case ends.
 
 * 3a. The given index is invalid.
 
-    * 3a1. AddressBook shows an error message.
+    * 3a1. FoodNotes shows an error message.
 
       Use case resumes at step 2.
+
+* 3b. The description is not specified
+
+    * 3b1. FoodNotes shows an error message.
+
+      Use case resumes at step 2.
+    
+
+
+**Use case: Delete a stall**
+
+**MSS**
+
+1.  User requests to list stalls
+2.  FoodNotes shows a list of stalls
+3.  User requests to delete a specific stall in the list
+4.  FoodNotes deletes the stall
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The list of stalls is empty.
+
+  Use case ends.
+
+* 3a. The given index is invalid.
+
+    * 3a1. FoodNotes shows an error message.
+
+      Use case resumes at step 2.
+
+**Use case: Delete a review from stall**
+
+**MSS**
+
+1.  User requests to list stalls
+2.  FoodNotes shows a list of stalls
+3.  User requests to view a stall
+4.  FoodNotes shows the review and menu of the stall
+5.  User requests to delete the review
+6.  FoodNotes deletes the review
+
+    Use case ends.
+
+**Extensions**
+
+* 3a. The given index is invalid.
+
+    * 3a1. FoodNotes shows an error message.
+
+      Use case resumes at step 2.
+
+* 4a. There are no reviews.
+
+  Use case ends.
+
+**Use case: Add a menu item to a stall**
+
+**MSS**
+
+1.  User requests to list stalls
+2.  FoodNotes shows a list of stalls
+3.  User requests to add a menu item to the stall
+4.  FoodNotes add a menu item to the stall
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The list of stalls is empty.
+
+  Use case ends.
+
+* 3a. The given index is invalid.
+
+    * 3a1. FoodNotes shows an error message.
+
+      Use case resumes at step 2.
+
+
+  Use case ends.
+
+**Use case: Review a menu item from a stall**
+
+**MSS**
+
+1.  User requests to list stalls
+2.  FoodNotes shows a list of stalls
+3.  User requests to view a stall
+4.  User requests to a review a menu item from the stall
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The list of stalls is empty.
+
+  Use case ends.
+
+* 3a. The given index is invalid.
+
+    * 3a1. FoodNotes shows an error message.
+
+      Use case resumes at step 2.
+
+* 4a. The given index is invalid
+
+    * 4a1. FoodNotes shows an error message.
+
+      Use case resumes at step 2.
+
+* 4b. The description is not specified
+
+    * 4b1. FoodNotes shows an error message.
+
+      Use case resumes at step 2.
+
+**Use case: Delete a menu item from stall**
+
+**MSS**
+
+1.  User requests to list stalls
+2.  FoodNotes shows a list of stalls
+3.  User requests to view a stall
+4.  FoodNotes shows the review and menu of the stall
+5.  User requests to delete a menu item
+6.  FoodNotes deletes the menu item
+
+    Use case ends.
+
+**Extensions**
+
+* 4a. There are no menu items.
+
+  Use case ends.
+
+* 5a. The given index is invalid.
+
+    * 5a1. FoodNotes shows an error message.
+
+      Use case resumes at step 4.
+
 
 *{More to be added}*
 
 ### Non-Functional Requirements
 
 1.  Should work on any _mainstream OS_ as long as it has Java `11` or above installed.
-2.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
+2.  Should be able to hold up to 1000 stalls without a noticeable sluggishness in performance for typical usage.
 3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
 
 *{More to be added}*
@@ -338,15 +516,15 @@ testers are expected to do more *exploratory* testing.
 
 1. Initial launch
 
-   1. Download the jar file and copy into an empty folder
+    1. Download the jar file and copy into an empty folder
 
-   1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
+    1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
 
 1. Saving window preferences
 
-   1. Resize the window to an optimum size. Move the window to a different location. Close the window.
+    1. Resize the window to an optimum size. Move the window to a different location. Close the window.
 
-   1. Re-launch the app by double-clicking the jar file.<br>
+    1. Re-launch the app by double-clicking the jar file.<br>
        Expected: The most recent window size and location is retained.
 
 1. _{ more test cases …​ }_
@@ -355,16 +533,16 @@ testers are expected to do more *exploratory* testing.
 
 1. Deleting a person while all persons are being shown
 
-   1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
+    1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
 
-   1. Test case: `delete 1`<br>
-      Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
+    1. Test case: `delete 1`<br>
+       Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
 
-   1. Test case: `delete 0`<br>
-      Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
+    1. Test case: `delete 0`<br>
+       Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
 
-   1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
-      Expected: Similar to previous.
+    1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
+       Expected: Similar to previous.
 
 1. _{ more test cases …​ }_
 
@@ -372,6 +550,6 @@ testers are expected to do more *exploratory* testing.
 
 1. Dealing with missing/corrupted data files
 
-   1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
+    1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
 
 1. _{ more test cases …​ }_
