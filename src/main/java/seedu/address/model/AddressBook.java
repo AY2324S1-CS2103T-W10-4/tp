@@ -7,7 +7,6 @@ import java.util.List;
 import javafx.collections.ObservableList;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.model.stall.Stall;
-import seedu.address.model.stall.StallReview;
 import seedu.address.model.stall.UniqueStallList;
 
 /**

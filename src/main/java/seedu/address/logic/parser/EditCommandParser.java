@@ -6,7 +6,6 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_LOCATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 
 import seedu.address.commons.core.index.Index;
-import seedu.address.logic.commands.AddStallReviewCommand;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 

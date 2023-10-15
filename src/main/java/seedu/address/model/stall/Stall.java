@@ -38,7 +38,7 @@ public class Stall {
         return stallReview;
     }
 
-    public void setStallReview (StallReview stallReview) {
+    public void setStallReview(StallReview stallReview) {
         this.stallReview = stallReview;
     }
 
